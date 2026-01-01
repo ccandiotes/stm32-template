@@ -1,10 +1,42 @@
 cmake_minimum_required(VERSION 3.22)
 
-# STM32 template placeholder
-project(stm32_template C CXX ASM)
+project(stm32f411_template C ASM)
 
-message(STATUS "This is a template placeholder CMakeLists.txt")
-message(STATUS "Next: add STM32F411 toolchain, linker script, startup, and sources")
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Create a dummy target so CMake config succeeds even before firmware sources exist.
-add_library(stm32_template_placeholder INTERFACE)
+set(MCU_FLAGS
+    -mcpu=cortex-m4
+    -mthumb
+    -mfloat-abi=soft
+)
+
+add_compile_options(
+    ${MCU_FLAGS}
+    -O0
+    -g3
+    -Wall
+    -ffunction-sections
+    -fdata-sections
+)
+
+add_link_options(
+    ${MCU_FLAGS}
+    -T${CMAKE_SOURCE_DIR}/linker/stm32f411.ld
+    -Wl,--gc-sections
+)
+
+include_directories(
+    Core/Inc
+)
+
+file(GLOB_RECURSE SOURCES
+    Core/Src/*.c
+    startup/*.s
+)
+
+add_executable(firmware.elf ${SOURCES})
+
+set_target_properties(firmware.elf PROPERTIES
+    LINK_DEPENDS ${CMAKE_SOURCE_DIR}/linker/stm32f411.ld
+)
