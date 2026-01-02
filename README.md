@@ -7,10 +7,10 @@ Cortex-Debug automatically passes this path using the -cp argument.
 
 To avoid duplicate arguments and ensure reliable startup, the CubeProgrammer path must be provided via an environment variable.
 
-Set the following user environment variable once on your system:
-Name STM32CUBEPRG_PATH	
-Value E:\ST\STM32CubeProgrammer\bin
-**Adjust the path according to your STM32CubeProgrammer installation location 
+Set the following user environment variables once on your system:
+STLINK_GDBSERVER_PATH=<path-to-ST-LINK_gdbserver.exe>
+STM32CUBE_PROGRAMMER_PATH=<path-to-STM32CubeProgrammer>/bin
+**Adjust the path according to your STM32CubeProgrammer installation location, Restart VS Code after setting these variables 
 
 Prerequisites:
 Arm GNU Toolchain (arm-none-eabi-gcc, arm-none-eabi-gdb)
@@ -30,3 +30,4 @@ Build with:
   cmake --preset debug
   cmake --build --preset debug
 4) Debug with F5
+
