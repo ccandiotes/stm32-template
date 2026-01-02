@@ -13,15 +13,11 @@
 
       "device": "STM32F411",
       "gdbPath": "arm-none-eabi-gdb",
-
       "serverpath": "E:/ST/ST-LINK_gdbserver.exe",
 
       "runToEntryPoint": "main"
-    
-      "stlink": {
-      "stm32cubeprogrammer": "E:/ST/STM32CubeProgrammer/bin"
-      }
     }
   ]
 }
+
 
