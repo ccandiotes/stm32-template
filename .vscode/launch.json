@@ -2,16 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "STM32 Debug (ST-Link)",
+      "name": "STM32F411 Debug (ST-Link GDB Server)",
       "type": "cortex-debug",
       "request": "launch",
       "servertype": "stlink",
       "interface": "swd",
-      "cwd": "\${workspaceFolder}",
-      "executable": "\${workspaceFolder}/build/firmware.elf",
+
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/firmware.elf",
+
       "device": "STM32F411",
-      "runToMain": true,
-      "gdbPath": "arm-none-eabi-gdb"
+      "gdbPath": "arm-none-eabi-gdb",
+
+      "serverpath": "E:/ST/ST-LINK_gdbserver.exe",
+
+      "runToEntryPoint": "main"
+    
+      "stlink": {
+      "stm32cubeprogrammer": "E:/ST/STM32CubeProgrammer/bin"
+      }
     }
   ]
 }
+
