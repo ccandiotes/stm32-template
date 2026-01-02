@@ -24,7 +24,12 @@
       "stm32cubeprogrammer": "${env:STM32CUBE_PROGRAMMER_PATH}",
 
       "runToEntryPoint": "main",
-      "showDevDebugOutput": "raw"
+      "showDevDebugOutput": "raw",
+
+      "liveWatch": {
+      "enabled": true,
+      "samplesPerSecond": 4
+      }
     }
   ]
 }
