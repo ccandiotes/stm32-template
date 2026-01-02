@@ -2,29 +2,30 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "STM32F411 Debug (External ST-LINK GDB Server)",
+      "name": "STM32F411 Debug (ST-LINK V3SET)",
       "type": "cortex-debug",
       "request": "launch",
-      "servertype": "external",
+      "servertype": "stlink",
+      "interface": "swd",
 
-      "cwd": "${workspaceFolder}/build",
+      "cwd": "${workspaceFolder}",
       "executable": "${workspaceFolder}/build/firmware.elf",
+
+      // Leave this as just "STM32F411" or "STM32F411CE" (either usually works)
+      "device": "STM32F411",
+
+      // If arm-none-eabi-gdb is on PATH, keep this. Otherwise set it to your full gdb exe path.
       "gdbPath": "arm-none-eabi-gdb",
 
-      "gdbTarget": "127.0.0.1:50000",
+      // Point Cortex-Debug at the ST-LINK gdb server exe (your env var)
+      "stlinkPath": "${env:STLINK_GDBSERVER_PATH}",
 
-      "serverpath": "${env:STLINK_GDBSERVER_PATH}",
-      "serverArgs": [
-        "-p", "50000",
-        "-cp", "${env:STM32CUBE_PROGRAMMER_PATH}",
-        "--swd",
-        "--halt"
-      ],
+      // Point Cortex-Debug at the CubeProgrammer *bin* folder (your env var)
+      "stm32cubeprogrammer": "${env:STM32CUBE_PROGRAMMER_PATH}",
 
       "runToEntryPoint": "main",
       "showDevDebugOutput": "raw"
     }
   ]
 }
-
 
