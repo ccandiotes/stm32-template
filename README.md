@@ -73,6 +73,13 @@ VS Code Extensions
   C/C++ (Microsoft)
   (Optional) clangd (if using compile_commands.json)
 
+Building the Firmware
+ Configure (Debug)
+   _cmake --preset debug_
 
+ Build
+  _cmake --build --preset debug_
 
+ Output:
+  build/firmware.elf
 
